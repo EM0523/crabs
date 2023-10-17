@@ -20,15 +20,15 @@ function crabs ()
   if( cmd == "w" || cmd == "a" || cmd == "d" ) %Captain has moved. Respond.
 
   % erase old captain
-  for i=1:length( captGraphics )
-    set( captGraphics(i), 'Visible', 'off' );
+  for i=1:length( captainGraphics )
+    set( captainGraphics(i), 'Visible', 'off' );
   endfor
 
 % move capt
 [xCapt, yCapt, thetaCapt] = moveCapt(cmd, xCapt, yCapt, thetaCapt);
 
 % draw new capt
-captGraphics = drawCapt( xCapt, yCapt, thetaCapt, sizeCapt);
+captainGraphics = drawCapt( xCapt, yCapt, thetaCapt, sizeCapt);
 
 endif
 
