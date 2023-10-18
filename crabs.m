@@ -6,9 +6,16 @@ function crabs ()
   yCapt = 1000;
   thetaCapt = -pi/2;
   sizeCapt = 50;
+
+  xCrab = 800;
+  yCrab = 500;
+  thetaCrab = -pi/2;
+  sizeCrab = 50;
   % Draw the captain and initialize graphics handles
   % Put your call to drawCapt() here ..... You must give drawCapt its
-  captainGraphics = drawCapt(xCapt , yCapt , thetaCapt , sizeCapt)
+  captainGraphics = drawCapt(xCapt , yCapt , thetaCapt , sizeCapt);
+
+  crabsGraphics = drawCrab (xCrab,yCrab,thetaCrab,sizeCrab);
   % input and output arguments.
 
   cmd = "null"; % initial command
@@ -29,6 +36,9 @@ function crabs ()
 
 % draw new capt
 captainGraphics = drawCapt( xCapt, yCapt, thetaCapt, sizeCapt);
+
+%draw crabs
+crabsGraphics = drawCrab (xCrab,yCrab,thetaCrab,sizeCrab);
 
 endif
 
