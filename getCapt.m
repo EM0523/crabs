@@ -19,6 +19,7 @@ function capt = getCapt (captSize)
   %spear
   captPt13=[ 3*captSize; -2*captSize; 1];
   captPt14=[ -captSize; -2*captSize; 1];
+  %matrix
   capt = [ captPt1, captPt2, captPt3, captPt4, captPt5, captPt6, captPt7, ...
   captPt8, captPt9, captPt10, captPt11, captPt12, captPt13, captPt14];
 endfunction

@@ -15,7 +15,7 @@ function crabs ()
   % Put your call to drawCapt() here ..... You must give drawCapt its
   captainGraphics = drawCapt(xCapt , yCapt , thetaCapt , sizeCapt);
 
-  crabsGraphics = drawCrab (xCrab,yCrab,thetaCrab,sizeCrab);
+  crabGraphics = drawCrab(xCrab,yCrab,thetaCrab,sizeCrab);
   % input and output arguments.
 
   cmd = "null"; % initial command
@@ -31,16 +31,25 @@ function crabs ()
     set( captainGraphics(i), 'Visible', 'off' );
   endfor
 
-% move capt
-[xCapt, yCapt, thetaCapt] = moveCapt(cmd, xCapt, yCapt, thetaCapt);
+  % move capt
+  [xCapt, yCapt, thetaCapt] = moveCapt(cmd, xCapt, yCapt, thetaCapt);
 
-% draw new capt
-captainGraphics = drawCapt( xCapt, yCapt, thetaCapt, sizeCapt);
+  % draw new capt
+ captainGraphics = drawCapt( xCapt, yCapt, thetaCapt, sizeCapt);
 
-%draw crabs
-crabsGraphics = drawCrab (xCrab,yCrab,thetaCrab,sizeCrab);
+ elseif (cmd == "i" || cmd == "j" || cmd == "k" || cmd == "l" || cmd ==",") % respond crab moved
 
-endif
+ %erase old crab
+ for i=1:length( crabGraphics )
+   set(crabGraphics(i), 'Visible', 'off' );
+  endfor
+
+   %move crab
+   [xCrab,yCrab,thetaCrab] = moveCrab(cmd,xCrab,yCrab,thetaCrab,sizeCrab, mapHeight, mapWidth);
+
+   %draw crabs
+   crabGraphics = drawCrab (xCrab,yCrab,thetaCrab,sizeCrab);
+   endif
 
 endwhile
 endfunction
