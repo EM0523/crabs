@@ -1,4 +1,3 @@
-
 function jellyHandle = drawJelly (x,y,theta,size)
 
   jelly = getJelly(size);

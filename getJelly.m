@@ -1,4 +1,3 @@
-
 function jelly = getJelly (size)
 
   %right side
