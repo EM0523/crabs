@@ -1,5 +1,7 @@
-function crabs()
-    level = 1;
+function crabs(level)
+  level = 1
+  numCrabs = (4*level);
+  numJelly = (4*level);
   % Draw the game map and initialize map dimensions.
   [mapHeight , mapWidth] = drawMap( "BGImage.png" );
 
@@ -11,25 +13,34 @@ function crabs()
   healthCapt = 100;
   crabsCaught = 0;
 
-  xCrab = 800;
-  yCrab = 500;
-  thetaCrab = -pi/2;
+  %initialize crab location,heading, and size
+  xCrab = rand(1,numCrabs)*mapWidth;
+  yCrab = 3*mapHeight/4 + rand(1,numCrabs)*mapHeight/4;
+  thetaCrab = ones(1,numCrabs)*(-pi/2);
+  crabscaught = 0;
   sizeCrab = 50;
+  isCrabcaught = zeros(1,numCrabs);
 
   %initialize jelly fish
-  xJelly=rand*mapWidth;
-  yJelly=0;
-  thetaJelly = -pi/2;
+  xJelly = rand(1,numJelly)*mapWidth;
+  yJelly = rand(1,numJelly)*mapHeight;
+  thetaJelly = ones(1,numCrabs)*(-pi/2);
   sizeJelly = 25;
   jellySting = 2;
 
   % Draw the captain and initialize graphics handles
   % Put your call to drawCapt() here ..... You must give drawCapt its
-[captainGraphics,xNet,yNet] = drawCapt(xCapt,yCapt,thetaCapt,sizeCapt);
+  [captainGraphics,xNet,yNet] = drawCapt(xCapt,yCapt,thetaCapt,sizeCapt);
 
-  crabGraphics = drawCrab(xCrab,yCrab,thetaCrab,sizeCrab);
+  %draw crabs
+ for k=1:numCrabs
+    crabGraphics(:,k) = drawCrab(xCrab(k),yCrab(k),thetaCrab(k),sizeCrab);
+  endfor
 
-  jellyGraphics = drawJelly(xJelly,yJelly,thetaJelly,sizeJelly);
+    %draw jelly
+ for k=1:numJelly
+    jellyGraphics(:,k) = drawJelly(xJelly(k),yJelly(k),thetaJelly(k),sizeJelly);
+  endfor
 
   % input and output arguments.
 
@@ -38,7 +49,8 @@ function crabs()
   % print health status
     healthLoc = [100,100];
     crabsCaughtLoc = [100,175];
-    healthStatus = text(healthLoc(1), healthLoc(2), strcat('Health = ', ...
+
+ healthStatus = text(healthLoc(1), healthLoc(2), strcat('Health = ', ...
                   num2str(healthCapt)), 'FontSize', 12, 'Color', 'red');
   crabsCaughtStatus = text(crabsCaughtLoc(1), crabsCaughtLoc(2), ...
   strcat('Crabs Caught = ',num2str(crabsCaught)), 'FontSize', 12, 'Color', 'red');
@@ -54,29 +66,32 @@ function crabs()
   crabsCaughtStatus = text(crabsCaughtLoc(1), crabsCaughtLoc(2), ...
   strcat('Crabs Caught = ',num2str(crabsCaught)), 'FontSize', 12, 'Color', 'red');
 
+   for k=1:numJelly
+
   if ( getDist(xJelly,yJelly,xCapt,yCapt) < 3*sizeCapt )
     healthCapt = healthCapt - jellySting;
   endif
 
  % erase old jellyfish
    for i=1:length(jellyGraphics)
-     delete(jellyGraphics(i));
+     delete(jellyGraphics(i,k));
    endfor
 
-   % move jellyfish
-   [xJelly,yJelly,thetaJelly] = moveJelly(level, xJelly, yJelly,thetaJelly, sizeJelly, mapHeight,mapWidth);
-
-   % draw jellyfish
-   jellyGraphics = drawJelly(xJelly,yJelly,thetaJelly,sizeJelly);
+   %initialize jelly fish
+  xJelly = rand(1,numJelly)*mapWidth;
+  yJelly = rand(1,numJelly)*mapHeight;
+  thetaJelly = ones(1,numCrabs)*(-pi/2);
+  sizeJelly = 25;
+  jellySting = 2;
 
    %Read the keyboard.
   cmd = kbhit(1);
   if (cmd == 'Q')
     break;
-    endif
+  endif
 
+ endfor
     % Read the keyboard.
-
   if( cmd == "w" || cmd == "a" || cmd == "d" ) %Captain has moved. Respond.
 
   % erase old captain
@@ -92,28 +107,29 @@ function crabs()
 
  endif
 
- if( getDist(xNet,yNet,xCrab,yCrab) < 2*sizeCapt ) %crab is caught
+ for k=1:numCrabs
+
+ if(!isCrabcaught(k)&&getDist(xNet,yNet,xCrab(k),yCrab(k)) < 2*sizeCapt ) %crab is caught
 
  %keep track of how many crabs are caught
-
- crabsCaught = crabsCaught +1;
+ crabsCaught = crabsCaught + 1;
+ isCrabCaught(k)= 4;
 
  %erase old crab
- for i=1:length(crabGraphics)
-  delete(crabGraphics(i));
-endfor
+ for i=1:length(crabGraphics(:,k))
+  delete(crabGraphics(i,k));
+  endfor
 
-%create a new crab. initialize new crab location, heading and size
-xCrab = rand*mapWidth;
-yCrab = rand*mapHeight;
-thetaCrab = -pi/2;
-sizeCrab = 50;
-
-%draw new crab
-crabGraphics = drawCrab(xCrab,yCrab,thetaCrab,sizeCrab);
-
+ %initialize crab location,heading, and size
+  xCrab = rand(1,numCrabs)*mapWidth;
+  yCrab = 3*mapHeight/4 + rand(1,numCrabs)*mapHeight/4;
+  thetaCrab = ones(1,numCrabs)*(-pi/2);
+  crabscaught = 0;
+  sizeCrab = 50;
+  isCrabcaught = zeros(1,numCrabs);
 endif
 
+endfor
    fflush(stdout);
    pause(.01)
    endwhile

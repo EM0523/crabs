@@ -1,4 +1,4 @@
-function jellyHandle = drawJelly (x,y,theta,size)
+function jellyGraphics = drawJelly (x,y,theta,size)
 
   jelly = getJelly(size);
 
@@ -22,18 +22,18 @@ function jellyHandle = drawJelly (x,y,theta,size)
   pt12=jelly(:,12);
   pt13=jelly(:,13);
 
-  jellyHandle(1)=drawLine(pt1,pt2,'m');
-  jellyHandle(2)=drawLine(pt2,pt3,'m');
-  jellyHandle(3)=drawLine(pt3,pt4,'m');
-  jellyHandle(4)=drawLine(pt4,pt5,'m');
-  jellyHandle(5)=drawLine(pt6,pt7,'m');
-  jellyHandle(6)=drawLine(pt7,pt8,'m');
-  jellyHandle(7)=drawLine(pt8,pt9,'m');
-  jellyHandle(8)=drawLine(pt10,pt11,'m');
-  jellyHandle(9)=drawLine(pt11,pt12,'m');
-  jellyHandle(10)=drawLine(pt12,pt13,'m');
-  jellyHandle(11)=drawLine(pt13,pt5,'m');
-  jellyHandle(12)=drawLine(pt12,pt4,'m');
+  jellyGraphics(1)=drawLine(pt1,pt2,'b');
+  jellyGraphics(2)=drawLine(pt2,pt3,'b');
+  jellyGraphics(3)=drawLine(pt3,pt4,'b');
+  jellyGraphics(4)=drawLine(pt4,pt5,'b');
+  jellyGraphics(5)=drawLine(pt6,pt7,'b');
+  jellyGraphics(6)=drawLine(pt7,pt8,'b');
+  jellyGraphics(7)=drawLine(pt8,pt9,'b');
+  jellyGraphics(8)=drawLine(pt10,pt11,'b');
+  jellyGraphics(9)=drawLine(pt11,pt12,'b');
+  jellyGraphics(10)=drawLine(pt12,pt13,'b');
+  jellyGraphics(11)=drawLine(pt13,pt5,'b');
+  jellyGraphics(12)=drawLine(pt12,pt4,'b');
 
 
 endfunction
