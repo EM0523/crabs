@@ -1,7 +1,6 @@
 function crabs(level)
   level = 1
-  numCrabs = (4*level);
-  numJelly = (4*level);
+  numJelly = level;
   % Draw the game map and initialize map dimensions.
   [mapHeight , mapWidth] = drawMap( "BGImage.png" );
 
