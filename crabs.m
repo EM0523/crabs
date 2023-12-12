@@ -1,5 +1,6 @@
 function crabs(level)
   level = 1
+  numCrabs = level;
   numJelly = level;
   % Draw the game map and initialize map dimensions.
   [mapHeight , mapWidth] = drawMap( "BGImage.png" );
@@ -72,7 +73,7 @@ function crabs(level)
   endif
 
  % erase old jellyfish
-   for i=1:length(jellyGraphics)
+   for i=1:length(jellyGraphics(:,k))
      delete(jellyGraphics(i,k));
    endfor
 
