@@ -1,11 +1,11 @@
-function jellyGraphics = drawJelly (x,y,theta,size)
+function jellyGraphics = drawJelly (xjelly,yjelly,thetajelly,sizejelly)
 
-  jelly = getJelly(size);
+  jelly = getJelly(sizejelly);
 
-  R = getRotation(theta);
+  R = getRotation(thetajelly);
   jellyRotated = R*jelly;
 
-  T = getTranslation(x,y);
+  T = getTranslation(xjelly,yjelly);
   jelly = T*jellyRotated;
 
   pt1=jelly(:,1);

@@ -1,5 +1,5 @@
-function dist = getDist(x1, y1, x2, y2)
-  a = (y2 - y1);
-  b = (x2 - x1);
- dist = sqrt(a.^2 + b.^2);
+function dist = getDist(xCapt, yCapt, xJelly, yJelly)
+  xDiff = (yCapt - yJelly);
+  yDiff = (xCapt - xJelly);
+ dist = sqrt((xDiff).^2 + (yDiff).^2);
 endfunction

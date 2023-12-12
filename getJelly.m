@@ -1,27 +1,28 @@
 function jelly = getJelly (size)
 
   %right side
-  pt1=[-7*size;size;1];
-  pt2=[-5*size;size;1 ];
-  pt3=[-3*size;2*size;1 ];
-  pt4=[-size;size;1 ];
-  pt5=[size;size;1 ];
+  jellypt1=[-7*size;size;1];
+  jellypt2=[-5*size;size;1 ];
+  jellypt3=[-3*size;2*size;1 ];
+  jellypt4=[-size;size;1 ];
+  jellypt5=[size;size;1 ];
 
 
   %middle
-  pt6=[-9*size;-2*size;1 ];
-  pt7=[-5*size;0;1 ];
-  pt8=[-3*size;-size;1 ];
-  pt9=[-size;0;1 ];
+  jellypt6=[-9*size;-2*size;1 ];
+  jellypt7=[-5*size;0;1 ];
+  jellypt8=[-3*size;-size;1 ];
+  jellypt9=[-size;0;1 ];
 
 
   %left side
-   pt10=[-5*size;-size;1 ];
-   pt11=[-3*size;-2*size;1 ];
-   pt12=[-size;-size;1 ];
-   pt13=[size;-size;1 ];
+   jellypt10=[-5*size;-size;1 ];
+   jellypt11=[-3*size;-2*size;1 ];
+   jellypt12=[-size;-size;1 ];
+   jellypt13=[size;-size;1 ];
 
 
-  jelly=[pt1,pt2,pt3,pt4,pt5,pt6,pt7,pt8,pt9,pt10,pt11,pt12,pt13];
+  jelly=[jellypt1,jellypt2,jellypt3,jellypt4,jellypt5,jellypt6,jellypt7,...
+  jellypt8,jellypt9,jellypt10,jellypt11,jellypt12,jellypt13];
 
 endfunction

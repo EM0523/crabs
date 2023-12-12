@@ -1,4 +1,4 @@
-function crab = getCrab (size )
+function crab = getCrab (size)
 % This function stores and returns the crab at the origin with zero heading in the form of a matirx.
 % Each colunm represents one point on the crab.
 %body
